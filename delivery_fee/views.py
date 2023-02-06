@@ -105,7 +105,7 @@ class CalculateFee(View):
         # if cart_value > cart_value_max delivery_fee is 0 Euro
         # and exit calculation
         if cart_value >= self.cart_value_max:
-            return JsonResponse({"data": 0})
+            return JsonResponse({"delivery_fee": 0})
 
         delivery_fee = 0
         delivery_fee += self.min_cart_val_fee(cart_value)
@@ -121,4 +121,4 @@ class CalculateFee(View):
         if delivery_fee > self.delivery_fee_max:
             delivery_fee = self.delivery_fee_max
 
-        return JsonResponse({"data": int(delivery_fee)})
+        return JsonResponse({"delivery_fee": int(delivery_fee)})
